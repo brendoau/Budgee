@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Super from './components/Super';
 
 function App() {
   return (
@@ -31,10 +32,6 @@ function App() {
 
 function Home() {
   return <h2>Home</h2>;
-}
-
-function Super() {
-  return <h2>Superannuation</h2>;
 }
 
 export default App;
