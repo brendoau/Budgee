@@ -1,20 +1,34 @@
+import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 
-function Home() {
 
-    const element = (
-        <div>
-            <h2>Uploader</h2>
-            <label for="upload">Choose a file to upload:</label>
-            <input type="file" id="upload" name="upload"></input>
+const useStyles = makeStyles((theme) => ({
+    input: {
+        display: 'none',
+    }
+}));
 
-            <Button variant="contained" color="primary">
-                Hello World
-            </Button>
-        </div>
-    );
+export default function Uploader() {
 
-    return element;
+    const classes = useStyles();
+
+    return (
+        <Container maxWidth="sm">
+            <Box height="100vh" display="flex" justifyContent="center" alignItems="center">
+                <input
+                    accept="image/*"
+                    className={classes.input}
+                    id="contained-button-file"
+                    multiple
+                    type="file"
+                />
+                <label htmlFor="contained-button-file">
+                    <Button variant="contained" color="primary" component="span">
+                        Upload
+                    </Button>
+                </label>
+            </Box>
+        </Container>)
 }
-
-export default Home;
