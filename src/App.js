@@ -1,31 +1,23 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Super from './components/Super';
+import Uploader from './components/Uploader';
 
 function App() {
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/super">Superannuation</Link>
-            </li>
-          </ul>
-        </nav>
 
-        <Switch>
-          <Route path="/super">
-            <Super />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
+      <Link class="nav-link" to="/">Home</Link>
+      <Link class="nav-link" to="/uploader">Uploader</Link>
+
+      <Switch>
+        <Route path="/uploader">
+          <Uploader />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
+
     </Router>
   );
 }
