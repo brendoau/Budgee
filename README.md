@@ -1,3 +1,90 @@
+# Budgee 🦜
+
+Budgee has been built so that Brendan and Sarah don't have to spend time worrying about their finances.  
+
+The reason I made this is because over the years, I've used many financial apps, tools, websites etc to manage and plan my finances.  None of them worked for me.  
+
+Yes, I could use an Excel spreadsheet.  Buts its 2021!  Yes, I could spend >$50/month on financial software SaaS applications like Xero, MYOB.  But do I really need all the functionality they provide? No.  Does they actually work specifically for me?  No.
+
+It's time to build something that automates my financial life, something that is scalable, something that integrates with all my financial accounts (banks, super, insurance, bills, invesmtent portfolios, crytpo accounts etc).
+
+The goal is to be able to spend more time with my kids, my family, whilst being able to look at a dashboard when I'm walking down the hallway of my house, look at a monitor that is secured to my face, and see that everything is green and in check!
+
+## Features
+
+* Automatic imports of financial transactions
+* Customized data modelling for bespoke data sources
+* Ability to add account types e.g everyday insurance, mortgage, insurance, superannuation, bills, investments
+* Areas of the wesbite for key "life pillars" e.g Health, Finances, House, Car, Kids etc
+
+### Health Pillar
+
+The Health pillar will provide functionality for
+
+* Financials
+* Vaccintions (for each family member)
+* Medicare
+* Schedule of Dental, Skin checks and appointments etc
+* Recipes
+
+## Tech Stack
+
+### Backend
+
+* Google Firebase Firestore - Database
+* Google Firebase Storage - Blob/File Storage
+* Google Firebase Hosting - Website hosting
+* Google Firebase Functions - Serverless function
+
+### Frontend
+
+* React
+* React Router
+* Material UI / CSS
+
+### Tools
+
+* GitHub
+* Visual Studio Code
+* iTerm
+* Fish shell
+* Dracula Theme
+
+<br>
+
+# Installation
+
+## Firebase Project Creation
+
+We will be using a Firebase project to manage most of the Budgee backend ie database, hosting, functions, storage etc.
+
+### Prerequisites
+
+* Install your preferred editor or IDE.  For Budgee we are using [Visual Studio Code](https://code.visualstudio.com/).
+* [Sign into Firebase](https://console.firebase.google.com/) using your Google account.
+
+### Step 1: Create a Firebase project
+
+1. In the [Firebase console](https://console.firebase.google.com/), click **Add project**, then select or enter a **Project name**.   Click **Continue**.
+
+    ![](readme_images/2021-06-28-19-52-31.png)
+    ![](readme_images/2021-06-28-19-53-40.png)
+
+2. Disable Google Analytics.  Click **Create Project**.
+
+    ![](readme_images/2021-06-28-19-54-17.png)
+
+3. The project will be created.  Click **Continue** once it has been created.
+
+    ![](readme_images/2021-06-28-19-54-43.png)
+    ![](readme_images/2021-06-28-19-54-56.png)
+
+4. You will then be taken to the Firebase console project overview page.  Project creation is complete.
+
+    ![](readme_images/2021-06-28-19-55-23.png)
+
+<br>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
