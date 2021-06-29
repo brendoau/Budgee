@@ -85,6 +85,32 @@ We will be using a Firebase project to manage most of the Budgee backend ie data
 
 <br>
 
+### Step 2: Register the Budgee web app with Firebase
+
+TODO
+
+## Firebase Storage Setup
+
+We will be using Firebase storage to store uploaded files and documents into Budgee, as a landing area for subsequent upload on contained data into Firebase Firestore database.  
+
+For example, a monthly bank statement csv may be uploaded to Budgee.  It will land in Firebase Storage in the first instance for futher processing.
+
+### Step 1: Create a default Cloud Storage bucket
+
+1.  From the navigation pane of the [Firebase console](https://console.firebase.google.com/) select **Storage**, then click **Get started**.
+
+    ![](readme_images/2021-06-29-20-47-33.png)
+
+2.  Review the messaging about securing your Cloud Storage data using security rules. For now, we will leave the defaults.  Click **Done**.
+
+    ![](readme_images/2021-06-29-20-51-31.png)
+
+3.  Select `australia-southeast1` as the location for your default Cloud Storage bucket.  Click **Done**.
+
+    ![](readme_images/2021-06-29-20-52-26.png)
+
+<br>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
