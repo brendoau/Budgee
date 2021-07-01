@@ -111,35 +111,6 @@ There are a few [ways to add the Firebase Web SDKs](https://firebase.google.com/
 
 3. Using the config values you copied in the previous step, you can initialize your Firebase application.  This is done within [firebase.js](src/components/Firebase/firebase.js)
 
-4. Provide Firebase in React
-
-    > Following the example from [A Firebase in React Tutorial for Beginners](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial)
-
-    Use React's Context API to provide a Firebase instance once at the top-level of your component hierarchy.  See [context.js](src/components/Firebase/context.js).
-
-    For a well-encapsulated Firebase module, we'll define a [index.js](src/components/Firebase/index.js) file in our Firebase folder that exports all necessary functionalities (Firebase class, Firebase context for Consumer and Provider components):
-
-    The Firebase Context from the Firebase module (folder) is used to provide a Firebase instance to your entire application in the [src/index.js](src/index.js) file.
-
-    Doing it this way, we can be assured that Firebase is only instantiated once and that it is injected via React's Context API to React's component tree. Now, every component that is interested in using Firebase has access to the Firebase instance with a FirebaseContext.Consumer component.
-
-    For example
-
-    ```jsx
-    import React from 'react';
-    import  { FirebaseContext } from '../Firebase';
-    
-    const SomeComponent = () => (
-        <FirebaseContext.Consumer>
-            {firebase => {
-                return <div>I've access to Firebase and render something</div>;
-            }}
-        </FirebaseContext.Consumer>
-    );
- 
-    export default SomeComponent;
-    ```
-
     Firebase and React are now connected
 
 <br>

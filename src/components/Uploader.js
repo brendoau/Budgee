@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-import { FirebaseContext } from './Firebase';
+import storage from './Firebase/firebase';
 
 const useStyles = makeStyles((theme) => ({
     input: {
@@ -26,6 +26,10 @@ export default function Uploader() {
         // https://lo-victoria.com/introduction-to-firebase-storage-uploading-files
 
         //firebase upload here.
+        if (uploadedFile == null)
+            return;
+        storage.ref(`/images/${uploadedFile.name}`).put(uploadedFile)
+            .on("state_changed", alert("success"), alert);
     }
 
 
@@ -34,16 +38,9 @@ export default function Uploader() {
     return (
 
         <Container maxWidth="sm">
-
-            <FirebaseContext.Consumer>
-                {firebase => {
-                    return <div>I've access to Firebase and render something</div>;
-                }}
-            </FirebaseContext.Consumer>
-
             <Box height="100vh" display="flex" justifyContent="center" alignItems="center">
                 <input
-                    accept="image/*"
+                    accept="*"
                     className={classes.input}
                     id="contained-button-file"
                     multiple
