@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-
+import { FirebaseContext } from './Firebase';
 
 const useStyles = makeStyles((theme) => ({
     input: {
@@ -24,7 +24,7 @@ export default function Uploader() {
         // or split in two
         // https://www.geeksforgeeks.org/how-to-upload-files-in-firebase-storage-using-reactjs/
         // https://lo-victoria.com/introduction-to-firebase-storage-uploading-files
-        
+
         //firebase upload here.
     }
 
@@ -32,7 +32,15 @@ export default function Uploader() {
     const classes = useStyles();
 
     return (
+
         <Container maxWidth="sm">
+
+            <FirebaseContext.Consumer>
+                {firebase => {
+                    return <div>I've access to Firebase and render something</div>;
+                }}
+            </FirebaseContext.Consumer>
+
             <Box height="100vh" display="flex" justifyContent="center" alignItems="center">
                 <input
                     accept="image/*"
