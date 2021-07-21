@@ -173,15 +173,16 @@ Initialize your project
     ![](readme_images/2021-07-14-17-17-04.png)
     ![](readme_images/2021-07-14-17-18-02.png)
     ![](readme_images/2021-07-14-17-22-30.png)
+
 ### Step 2: Write functions
 
 Write JavaScript code (or TypeScript code to transpile at deployment) to handle events from Firebase services, Google Cloud services, or other event providers.
 
-We will follow the process to write functions that respond to [Cloud Storage triggers](https://firebase.google.com/docs/functions/gcp-storage-events)
+We will inevitably follow the process to write functions that respond to [Cloud Storage triggers](https://firebase.google.com/docs/functions/gcp-storage-events).  However to get started, we will use the the sample helloWorld function that was created during `firebase init functions`.
 
-<!-- <UP TO HERE> -->
+Uncomment the helloWorld function
 
-
+![](readme_images/2021-07-21-21-18-04.png)
 
 ### Step 3: Test functions
 
@@ -189,10 +190,21 @@ Use the [local emulator](https://firebase.google.com/docs/functions/local-emulat
 
 More info [here](https://firebase.google.com/docs/emulator-suite/connect_and_prototype) and [here](https://firebase.google.com/docs/emulator-suite/install_and_configure)
 
-1. Run `firebase init emulator` then `firebase emulators:start` and check the output for the URL of the Emulator Suite UI. It defaults to localhost:4000, but may be hosted on a different port on your machine. Enter that URL in your browser to open the Emulator Suite UI.
+1. Run `firebase init emulators`
 
-    ![](readme_images/2021-07-14-17-42-21.png)
+    ![](readme_images/2021-07-21-21-12-12.png)
+
+2. Run `firebase emulators:start` and check the output for the URL of the Emulator Suite UI. It defaults to localhost:4000, but may be hosted on a different port on your machine. Enter that URL in your browser to open the Emulator Suite UI.
+
+    ![](readme_images/2021-07-21-21-13-52.png)
     ![](readme_images/2021-07-14-17-44-31.png)
+
+3. Test the helloWorld function by browsing to the URL listed after firebase emulator starts up.  You will also be able to check the Functions Emulator logs.
+
+![](readme_images/2021-07-21-21-19-59.png)
+![](readme_images/2021-07-21-21-20-17.png)
+![](readme_images/2021-07-21-21-20-43.png)
+![](readme_images/2021-07-21-21-21-07.png)
 
 ### Step 4: Deploy and monitor	
 
