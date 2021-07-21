@@ -137,6 +137,88 @@ For example, a monthly bank statement csv may be uploaded to Budgee.  It will la
 
 <br>
 
+## Firebase Functions Setup
+
+We will be using Firebase functions to response to various events in the application.  
+
+For example, we run a cloud function to extract data from uploaded files (in Firebase Storage) and insert data records into Firebase Firestore.    
+### Step 1: Set up Cloud Functions
+
+Install the Firebase CLI 
+
+![](readme_images/2021-07-14-17-23-39.png)
+
+>`npm install -g firebase-tools`
+
+The following wizards informs you on how to create functions.  We will click through these, but wont run the commands mentioned, just yet...
+
+>   ![](readme_images/2021-07-14-17-26-04.png)
+    ![](readme_images/2021-07-14-17-26-42.png)
+
+
+Initialize your project
+
+1. Run `firebase login`
+2. Navigate to a new directory that will contain your firebase function code (e.g `Budgee-BE`)
+
+3. Run `firebase init functions`
+
+    ![](readme_images/2021-07-14-17-03-42.png)
+
+4. Run `npm install` in the `/functions` directory.
+
+5. To use Functions you will need to upgrade your project's billing plan
+
+    ![](readme_images/2021-07-14-17-17-04.png)
+    ![](readme_images/2021-07-14-17-18-02.png)
+    ![](readme_images/2021-07-14-17-22-30.png)
+### Step 2: Write functions
+
+Write JavaScript code (or TypeScript code to transpile at deployment) to handle events from Firebase services, Google Cloud services, or other event providers.
+
+We will follow the process to write functions that respond to [Cloud Storage triggers](https://firebase.google.com/docs/functions/gcp-storage-events)
+
+<!-- <UP TO HERE> -->
+
+
+
+### Step 3: Test functions
+
+Use the [local emulator](https://firebase.google.com/docs/functions/local-emulator) to test your functions.
+
+More info [here](https://firebase.google.com/docs/emulator-suite/connect_and_prototype) and [here](https://firebase.google.com/docs/emulator-suite/install_and_configure)
+
+1. Run `firebase init emulator` then `firebase emulators:start` and check the output for the URL of the Emulator Suite UI. It defaults to localhost:4000, but may be hosted on a different port on your machine. Enter that URL in your browser to open the Emulator Suite UI.
+
+    ![](readme_images/2021-07-14-17-42-21.png)
+    ![](readme_images/2021-07-14-17-44-31.png)
+
+### Step 4: Deploy and monitor	
+
+Enable billing for your project and deploy your functions using the Firebase CLI. You can use the Firebase console to view and search through your logs.
+
+Once your functions are working as desired in the emulator, you can proceed to deploying, testing, and running them in the production environment.
+
+1. Run this command to deploy your functions
+
+> `firebase deploy --only functions`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
