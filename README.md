@@ -216,20 +216,25 @@ Once your functions are working as desired in the emulator, you can proceed to d
 
 > `firebase deploy --only functions`
 
+    ![](readme_images/2021-07-21-21-31-09.png)
 
+After you run this command, the Firebase CLI outputs the URL for any HTTP function endpoints. In your terminal, you should see a line like the following:
 
+> https://us-central1-budgee-dev-aff3c.cloudfunctions.net/helloWorld
 
+After deploying, you will see your function in the Firebase console
 
+![](readme_images/2021-07-21-21-34-51.png)
 
+You can execute your function
 
+![](readme_images/2021-07-21-21-34-03.png)
 
+You can also [view logs in the Firebase console for Cloud Functions](https://console.firebase.google.com/project/_/functions/logs?search=&severity=DEBUG). 
 
+![](readme_images/2021-07-21-21-35-36.png)
 
-
-
-
-
-
+If you need to [delete functions](https://firebase.google.com/docs/functions/manage-functions#delete_functions) in development or production, use the Firebase CLI.
 
 
 # Getting Started with Create React App
