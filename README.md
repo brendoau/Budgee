@@ -142,6 +142,7 @@ For example, a monthly bank statement csv may be uploaded to Budgee.  It will la
 We will be using Firebase functions to response to various events in the application.  
 
 For example, we run a cloud function to extract data from uploaded files (in Firebase Storage) and insert data records into Firebase Firestore.    
+
 ### Step 1: Set up Cloud Functions
 
 Install the Firebase CLI 
@@ -159,11 +160,11 @@ The following wizards informs you on how to create functions.  We will click thr
 Initialize your project
 
 1. Run `firebase login`
-2. Navigate to a new directory that will contain your firebase function code (e.g `Budgee-BE`)
+2. Navigate to a new directory that will contain your firebase function code (e.g `budgee/`)
 
 3. Run `firebase init functions`
 
-    ![](readme_images/2021-07-14-17-03-42.png)
+    ![](readme_images/2021-07-21-20-58-15.png)
 
 4. Run `npm install` in the `/functions` directory.
 
