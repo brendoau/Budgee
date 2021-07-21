@@ -216,7 +216,7 @@ Once your functions are working as desired in the emulator, you can proceed to d
 
 > `firebase deploy --only functions`
 
-    ![](readme_images/2021-07-21-21-31-09.png)
+![](readme_images/2021-07-21-21-31-09.png)
 
 After you run this command, the Firebase CLI outputs the URL for any HTTP function endpoints. In your terminal, you should see a line like the following:
 
