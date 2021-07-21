@@ -137,6 +137,12 @@ For example, a monthly bank statement csv may be uploaded to Budgee.  It will la
 
 <br>
 
+### Step 2: Configure Firebase Storage
+
+1.  run `firebase init` and choose to configure cloud storage
+
+![](readme_images/2021-07-21-22-01-56.png)
+
 ## Firebase Functions Setup
 
 We will be using Firebase functions to response to various events in the application.  
