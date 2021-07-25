@@ -38,7 +38,7 @@ exports.processUploadedObject = functions
         const docRef = db.collection('anztransactions').doc();
         await docRef.set({
           date: p[0],
-          amount: p[1],
+          amount: parseFloat(p[1]),
           desc: p[2]
         });
       }

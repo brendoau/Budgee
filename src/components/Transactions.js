@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react';
 import firebase from './Firebase/firebase';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -43,32 +40,29 @@ export default function Transactions() {
     }
 
     return (
-        <Container maxWidth="sm">
-            <Box height="100vh" display="flex" justifyContent="center" alignItems="center">
-                <TableContainer component={Paper}>
-                    <Table className={classes.table} aria-label="simple table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>Date</TableCell>
-                                <TableCell>Description</TableCell>
-                                <TableCell>Amount</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {
-                                transactions.map(transaction => {
-                                    return (
-                                        <TableRow key={transaction.key}>
-                                            <TableCell>{transaction.date}</TableCell>
-                                            <TableCell>{transaction.amount}</TableCell>
-                                            <TableCell>{transaction.desc}</TableCell>
-                                        </TableRow>
-                                    )
-                                })
-                            }
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-            </Box>
-        </Container>)
+        <TableContainer component={Paper}>
+            <Table className={classes.table} aria-label="simple table">
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Date</TableCell>
+                        <TableCell>Description</TableCell>
+                        <TableCell>Amount</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {
+                        transactions.map(transaction => {
+                            return (
+                                <TableRow key={transaction.key}>
+                                    <TableCell>{transaction.date}</TableCell>
+                                    <TableCell>{transaction.amount}</TableCell>
+                                    <TableCell>{transaction.desc}</TableCell>
+                                </TableRow>
+                            )
+                        })
+                    }
+                </TableBody>
+            </Table>
+        </TableContainer>
+    )
 }
