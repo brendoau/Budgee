@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Uploader from './components/Uploader';
+import Transactions from './components/Transactions';
 
 function App() {
   return (
@@ -8,10 +9,14 @@ function App() {
 
       <Link class="nav-link" to="/">Home</Link>
       <Link class="nav-link" to="/uploader">Uploader</Link>
+      <Link class="nav-link" to="/transactions">Transactions</Link>
 
       <Switch>
         <Route path="/uploader">
           <Uploader />
+        </Route>
+        <Route path="/transactions">
+          <Transactions />
         </Route>
         <Route path="/">
           <Home />
