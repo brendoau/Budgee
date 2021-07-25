@@ -28,7 +28,7 @@ export default function Uploader() {
         //firebase upload here.
         if (uploadedFile == null)
             return;
-        storage.ref(`/images/${uploadedFile.name}`).put(uploadedFile)
+        storage.ref(`/${uploadedFile.name}`).put(uploadedFile)
             .on("state_changed", alert("success"), alert);
     }
 
