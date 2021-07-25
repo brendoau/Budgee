@@ -1,4 +1,8 @@
 const functions = require("firebase-functions");
+const admin = require('firebase-admin');
+const parse = require('csv-parse/lib/sync')
+
+admin.initializeApp()
 
 // Create and Deploy Your First Cloud Functions
 // https://firebase.google.com/docs/functions/write-firebase-functions
@@ -8,11 +12,37 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
   response.send("Hello from Firebase!");
 });
 
-exports.processUploadedObject = functions.storage.object().onFinalize(async (object) => {
-  const fileBucket = object.bucket; // The Storage bucket that contains the file.
-  const filePath = object.name; // File path in the bucket.
-  const contentType = object.contentType; // File content type.
-  const metageneration = object.metageneration; // Number of times metadata has been generated. New objects have a value of 1.
+// Process Uploaded Object
+exports.processUploadedObject = functions
+  .region('australia-southeast1')
+  .storage
+  .object()
+  .onFinalize(async (object) => {
+    const fileBucket = object.bucket; // The Storage bucket that contains the file.
+    const filePath = object.name; // File path in the bucket.
 
-  console.log(`file ${filePath} uploaded to Firebase Storage`);
-});
+    const storage = admin.storage() // Initialize Firebase Storage
+    const db = admin.firestore(); // Initialize Firebase Firestore
+
+    bucket = storage.bucket(fileBucket);
+    await bucket.file(filePath).download({ validation: false }).then(async function (data) {
+      const contents = data[0].toString()
+      const parsed = parse(contents, {
+        skip_empty_lines: true
+      })
+      console.log(parsed)
+      for (const p of parsed) {
+        // parsed.forEach(p => {
+        console.log(`Record is ${p}`)
+
+        const docRef = db.collection('anztransactions').doc();
+        await docRef.set({
+          date: p[0],
+          amount: p[1],
+          desc: p[2]
+        });
+      }
+
+      // console.log(parsed);
+    });
+  });
