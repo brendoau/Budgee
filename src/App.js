@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Uploader from './components/Uploader';
 import Transactions from './components/Transactions';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

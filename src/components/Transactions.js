@@ -1,23 +1,10 @@
 import { useEffect, useState } from 'react';
 import firebase from './Firebase/firebase';
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-
-const useStyles = makeStyles({
-    table: {
-        minWidth: 650,
-    },
-});
+import Table from 'react-bootstrap/Table';
+import { Container } from 'react-bootstrap';
 
 export default function Transactions() {
     const [transactions, setTransactions] = useState([]);
-    const classes = useStyles();
     const db = firebase.firestore();
 
     useEffect(() => {
@@ -40,29 +27,60 @@ export default function Transactions() {
     }
 
     return (
-        <TableContainer component={Paper}>
-            <Table className={classes.table} aria-label="simple table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Date</TableCell>
-                        <TableCell>Description</TableCell>
-                        <TableCell>Amount</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {
-                        transactions.map(transaction => {
-                            return (
-                                <TableRow key={transaction.key}>
-                                    <TableCell>{transaction.date}</TableCell>
-                                    <TableCell>{transaction.amount}</TableCell>
-                                    <TableCell>{transaction.desc}</TableCell>
-                                </TableRow>
-                            )
-                        })
-                    }
-                </TableBody>
+        <Container>
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td colSpan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                </tbody>
             </Table>
-        </TableContainer>
+        </Container>
+        // <TableContainer component={Paper}>
+        //     <Table className={classes.table} aria-label="simple table">
+        //         <TableHead>
+        //             <TableRow>
+        //                 <TableCell>Date</TableCell>
+        //                 <TableCell>Description</TableCell>
+        //                 <TableCell>Amount</TableCell>
+        //             </TableRow>
+        //         </TableHead>
+        //         <TableBody>
+        //             {
+        //                 transactions.map(transaction => {
+        //                     return (
+        //                         <TableRow key={transaction.key}>
+        //                             <TableCell>{transaction.date}</TableCell>
+        //                             <TableCell>{transaction.amount}</TableCell>
+        //                             <TableCell>{transaction.desc}</TableCell>
+        //                         </TableRow>
+        //                     )
+        //                 })
+        //             }
+        //         </TableBody>
+        //     </Table>
+        // </TableContainer>
     )
 }

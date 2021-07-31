@@ -1,15 +1,5 @@
 import { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
 import firebase from './Firebase/firebase';
-
-const useStyles = makeStyles((theme) => ({
-    input: {
-        display: 'none',
-    }
-}));
 
 export default function Uploader() {
 
@@ -34,26 +24,20 @@ export default function Uploader() {
             .on("state_changed", alert("success"), alert);
     }
 
-
-    const classes = useStyles();
-
     return (
-
-        <Container maxWidth="sm">
-            <Box height="100vh" display="flex" justifyContent="center" alignItems="center">
-                <input
-                    accept="*"
-                    className={classes.input}
-                    id="contained-button-file"
-                    multiple
-                    type="file"
-                    onChange={upload}
-                />
-                <label htmlFor="contained-button-file">
-                    <Button variant="contained" color="primary" component="span">
-                        Upload
-                    </Button>
-                </label>
-            </Box>
-        </Container>)
+        <div>hello</div>
+        //         <input
+        //             accept="*"
+        //             className={classes.input}
+        //             id="contained-button-file"
+        //             multiple
+        //             type="file"
+        //             onChange={upload}
+        //         />
+        //         <label htmlFor="contained-button-file">
+        //             <Button variant="contained" color="primary" component="span">
+        //                 Upload
+        //             </Button>
+        //         </label>
+    )
 }
