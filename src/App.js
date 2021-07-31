@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar>
+        <Navbar className="sticky-top">
           <Container>
             <Navbar.Brand href="/">
               <img
