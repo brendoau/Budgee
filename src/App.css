@@ -1,5 +1,9 @@
 .navbar-brand {
-    color: #43ff86 !important;
+    /* color: #43ff86 !important; */
     font-weight: bolder;
     font-family: system-ui;
+}
+
+.navbar {
+    background-color: #43ff86 !important;
 }

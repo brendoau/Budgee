@@ -30,61 +30,30 @@ export default function Transactions() {
         <Container className="mt-4">
             <Row>
                 <Col>
-                    <Table striped bordered hover>
+                    <Table borderless striped hover>
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Username</th>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Amount</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td colSpan="2">Larry the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
+                            {
+                                transactions.map(transaction => {
+                                    return (
+                                        <tr>
+                                            <td>{transaction.date}</td>
+                                            <td>{transaction.amount}</td>
+                                            <td>{transaction.desc}</td>
+                                        </tr>
+                                    )
+                                })
+                            }
                         </tbody>
                     </Table>
                 </Col>
             </Row>
         </Container>
-        // <TableContainer component={Paper}>
-        //     <Table className={classes.table} aria-label="simple table">
-        //         <TableHead>
-        //             <TableRow>
-        //                 <TableCell>Date</TableCell>
-        //                 <TableCell>Description</TableCell>
-        //                 <TableCell>Amount</TableCell>
-        //             </TableRow>
-        //         </TableHead>
-        //         <TableBody>
-        //             {
-        //                 transactions.map(transaction => {
-        //                     return (
-        //                         <TableRow key={transaction.key}>
-        //                             <TableCell>{transaction.date}</TableCell>
-        //                             <TableCell>{transaction.amount}</TableCell>
-        //                             <TableCell>{transaction.desc}</TableCell>
-        //                         </TableRow>
-        //                     )
-        //                 })
-        //             }
-        //         </TableBody>
-        //     </Table>
-        // </TableContainer>
     )
 }

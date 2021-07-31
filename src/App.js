@@ -9,9 +9,18 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar bg="dark" variant="dark">
+        <Navbar>
           <Container>
-            <Navbar.Brand href="#home">Budgee</Navbar.Brand>
+            <Navbar.Brand href="#home">
+              <img
+                alt=""
+                src="/budgee-logo.png"
+                width="30"
+                height="30"
+                // className="d-inline-block align-top"
+              />{' '}
+              Budgee
+            </Navbar.Brand>
             <Nav className="me-auto">
               <Link class="nav-link" to="/uploader">Upload</Link>
               <Link class="nav-link" to="/transactions">Transactions</Link>
