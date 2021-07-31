@@ -11,7 +11,7 @@ function App() {
       <Router>
         <Navbar>
           <Container>
-            <Navbar.Brand href="#home">
+            <Navbar.Brand href="/">
               <img
                 alt=""
                 src="/budgee-logo.png"
