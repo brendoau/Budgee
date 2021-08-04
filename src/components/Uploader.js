@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import firebase from './Firebase/firebase';
-import { Button, Form, Row, Col, Container } from 'react-bootstrap';
+import { Button, Form, Row, Col, Container, FloatingLabel } from 'react-bootstrap';
 
 export default function Uploader() {
 
@@ -48,6 +48,15 @@ export default function Uploader() {
                                 {/* <Form.Label>Large file input example</Form.Label> */}
                                 <Form.Control type="file" size="lg" onChange={e => setUploadedFile((file) => e.target.files[0])} />
                             </Form.Group>
+                        </Col>
+                        <Col>
+                            <Form.Select aria-label="Floating label select example" size="lg">
+                                <option>Type</option>
+                                <option value="1">ANZ</option>
+                                <option value="2">AusSuper</option>
+                                <option value="3">Bankwest</option>
+                                <option value="4">Coinbase</option>
+                            </Form.Select>
                         </Col>
                         <Col>
                             <Button variant="primary" type="submit" size="lg" disabled={isUploading}>
