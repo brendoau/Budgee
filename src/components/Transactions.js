@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import firebase from './Firebase/firebase';
 import Table from 'react-bootstrap/Table';
-import { Container, Row, Col, Pagination } from 'react-bootstrap';
+import { Container, Row, Col, Pagination, Badge} from 'react-bootstrap';
+import ReactECharts from 'echarts-for-react';
 
 export default function Transactions() {
     const [transactions, setTransactions] = useState([]);
@@ -21,7 +22,9 @@ export default function Transactions() {
                 key: doc.id,
                 date: date,
                 desc: desc,
-                amount: amount
+                amount: amount,
+                value: amount,
+                name: desc
             })
         })
         setTransactions(transactionsArray)
@@ -38,16 +41,62 @@ export default function Transactions() {
         );
     }
 
+    //viz
+    const options = {
+        title: {
+            text: 'Spend by Category',
+            // subtext: '纯属虚构',
+            left: 'center'
+        },
+        tooltip: {
+            trigger: 'item'
+        },
+        // legend: {
+        //     top: '5%',
+        //     left: 'center'
+        // },
+        series: [
+            {
+                name: '访问来源',
+                type: 'pie',
+                radius: '50%',
+                data: transactions,
+                // [
+                // { value: 1048, name: '搜索引擎' },
+                // { value: 735, name: '直接访问' },
+                // { value: 580, name: '邮件营销' },
+                // { value: 484, name: '联盟广告' },
+                // { value: 300, name: '视频广告' }
+                // ],
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+
     return (
         <Container className="mt-4">
             <Row>
+                <ReactECharts
+                    option={options}
+                // theme={"dark"}
+                />
+            </Row>
+            <Row>
                 <Col>
-                    <Table borderless striped hover>
+                    <Table borderless striped hover >
+                        {/* <Table borderless striped hover variant="dark" > */}
                         <thead>
                             <tr>
                                 <th>Date</th>
                                 <th>Description</th>
                                 <th>Amount</th>
+                                <th>Category</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,6 +107,16 @@ export default function Transactions() {
                                             <td>{transaction.date}</td>
                                             <td>{transaction.amount}</td>
                                             <td>{transaction.desc}</td>
+                                            <td>
+                                                <div>
+                                                    <Badge pill bg="info">
+                                                        Info
+                                                    </Badge>{' '}
+                                                    <Badge pill bg="dark">
+                                                        Dark
+                                                    </Badge>
+                                                </div>
+                                            </td>
                                         </tr>
                                     )
                                 })
