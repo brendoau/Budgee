@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import firebase from './Firebase/firebase';
-import { Button, Form, Row, Col, Container } from 'react-bootstrap';
 
 export default function Uploader() {
 
@@ -40,12 +39,11 @@ export default function Uploader() {
 
     return (
         <>
-            <Container className="mt-4">
+            {/* <Container className="mt-4">
                 <Form onSubmit={handleSubmit}>
                     <Row xs="auto" className="justify-content-md-center">
                         <Col>
                             <Form.Group controlId="formFileLg" className="mb-3">
-                                {/* <Form.Label>Large file input example</Form.Label> */}
                                 <Form.Control type="file" size="lg" onChange={e => setUploadedFile((file) => e.target.files[0])} />
                             </Form.Group>
                         </Col>
@@ -56,7 +54,7 @@ export default function Uploader() {
                         </Col>
                     </Row>
                 </Form>
-            </Container>
+            </Container> */}
 
             {/* <input
                 type="file"

@@ -2,14 +2,12 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Uploader from './components/Uploader';
 import Transactions from './components/Transactions';
-import { Navbar, Container, Nav } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <>
       <Router>
-        <Navbar className="sticky-top">
+        {/* <Navbar className="sticky-top">
           <Container>
             <Navbar.Brand href="/">
               <img
@@ -21,12 +19,12 @@ function App() {
               />{' '}
               Budgee
             </Navbar.Brand>
-            <Nav className="me-auto">
+            <Nav className="me-auto"> */}
               <Link class="nav-link" to="/uploader">Upload</Link>
               <Link class="nav-link" to="/transactions">Transactions</Link>
-            </Nav>
-          </Container>
-        </Navbar>
+            {/* </Nav> */}
+          {/* </Container> */}
+        {/* </Navbar> */}
 
         <Switch>
           <Route path="/uploader">
