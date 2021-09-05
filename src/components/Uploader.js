@@ -1,41 +1,54 @@
 import { useState } from 'react';
-import firebase from './Firebase/firebase';
 import { Button, Form, Row, Col, Container, FloatingLabel } from 'react-bootstrap';
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { storage } from './Firebase/firebase'
 
 export default function Uploader() {
 
     const [uploadedFile, setUploadedFile] = useState('');
     const [isUploading, setIsUploading] = useState(false);
 
-
-    const storage = firebase.storage();
-
-    const upload = (e) => {
-        // console.log(e.target.files[0]);
-        // const uploadedFile = e.target.files[0]
-        // setUploadedFile(file => (uploadedFile))
-
-        // two options - can have 1 upload function that uploads as soon as file is selelected https://dev.to/itnext/how-to-do-image-upload-with-firebase-in-react-cpj
-        // or    split in two
-        // https://www.geeksforgeeks.org/how-to-upload-files-in-firebase-storage-using-reactjs/
-        // https://lo-victoria.com/introduction-to-firebase-storage-uploading-files
-    }
-
     const handleSubmit = e => {
         e.preventDefault()
-        console.log(uploadedFile)
-        // get our new errors
-        //firebase upload here.
+        
         if (uploadedFile == null)
             return;
+        
         setIsUploading(true)
-        storage.ref(`/${uploadedFile.name}`)
-            .put(uploadedFile)
-            .then(() => {
-                setIsUploading(false)
-            })
-        // .on("state_changed", alert("success"), alert);
 
+        // Create a storage reference from our storage service
+        const storageRef = ref(storage, `${uploadedFile.name}`);
+
+        // Upload the file
+        const uploadTask = uploadBytesResumable(storageRef, uploadedFile)
+
+        uploadTask.on('state_changed',
+            (snapshot) => {
+                // Observe state change events such as progress, pause, and resume
+                // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log('Upload is ' + progress + '% done');
+                switch (snapshot.state) {
+                    case 'paused':
+                        console.log('Upload is paused');
+                        break;
+                    case 'running':
+                        console.log('Upload is running');
+                        break;
+                }
+            },
+            (error) => {
+                // Handle unsuccessful uploads
+            },
+            () => {
+                // Handle successful uploads on complete
+                // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                    console.log('File available at', downloadURL);
+                });
+                setIsUploading(false)
+            }
+        );
     }
 
     return (
@@ -66,24 +79,6 @@ export default function Uploader() {
                     </Row>
                 </Form>
             </Container>
-
-            {/* <input
-                type="file"
-                accept=".csv"
-            /> */}
-
-            {
-
-
-
-                //             onChange={upload}
-                //         />
-                //         <label htmlFor="contained-button-file">
-                //             <Button variant="contained" color="primary" component="span">
-                //                 Upload
-                //             </Button>
-                //         </label> */
-            }
         </>
     )
 }

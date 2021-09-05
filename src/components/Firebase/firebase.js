@@ -1,4 +1,9 @@
-import firebase from 'firebase';
+// Firebase App (the core Firebase SDK) is always required and must be listed first
+import { initializeApp } from 'firebase/app';
+
+// Add the Firebase products that you want to use
+import { getFirestore } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -10,9 +15,10 @@ const firebaseConfig = {
     appId: "1:809199118529:web:a770afedf6c67dd9c90c40"
 };
 
-firebase.initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig);
+const db = getFirestore();
+const storage = getStorage(firebaseApp);
 
-// const storage = firebase.storage();
-// const db = firebase.firestore();
-
-export default firebase;
+export { db, storage };
+// export default firebase;
+// export { db };

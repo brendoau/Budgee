@@ -40,7 +40,7 @@ The Health pillar will provide functionality for
 
 * React
 * React Router
-* Material UI / CSS
+* Tailwind UI / CSS
 
 ### Tools
 

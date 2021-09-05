@@ -1,22 +1,34 @@
 import { useEffect, useState } from 'react';
-import firebase from './Firebase/firebase';
+import { db } from './Firebase/firebase';
+import { collection, getDocs, doc, updateDoc } from "firebase/firestore";
 import Table from 'react-bootstrap/Table';
-import { Container, Row, Col, Pagination, Badge} from 'react-bootstrap';
-import ReactECharts from 'echarts-for-react';
+import { Container, Row, Col, Pagination, Badge, Form, Button } from 'react-bootstrap';
+// import ReactECharts from 'echarts-for-react';
 
 export default function Transactions() {
     const [transactions, setTransactions] = useState([]);
-    const db = firebase.firestore();
 
     //fetch transactions
     useEffect(() => {
         fetchTransactions();
     }, []);
 
+    async function updateCategory(id) {
+        console.log(id)
+        const ref = doc(db, "anztransactions", id);
+
+        // Set the "capital" field of the city 'DC'
+        await updateDoc(ref, {
+            category: 'Dummy'
+        });
+    }
+
     const fetchTransactions = async () => {
         const transactionsArray = [];
-        const data = await db.collection("anztransactions").get();
-        data.docs.forEach((doc) => {
+
+        const querySnapshot = await getDocs(collection(db, "anztransactions"));
+
+        querySnapshot.forEach((doc) => {
             const { date, desc, amount } = doc.data();
             transactionsArray.push({
                 key: doc.id,
@@ -26,9 +38,11 @@ export default function Transactions() {
                 value: amount,
                 name: desc
             })
-        })
+        });
+
         setTransactions(transactionsArray)
     }
+
 
     //pagination
     let active = 2;
@@ -82,10 +96,10 @@ export default function Transactions() {
     return (
         <Container className="mt-4">
             <Row>
-                <ReactECharts
+                {/* <ReactECharts
                     option={options}
                 // theme={"dark"}
-                />
+                /> */}
             </Row>
             <Row>
                 <Col>
@@ -93,6 +107,7 @@ export default function Transactions() {
                         {/* <Table borderless striped hover variant="dark" > */}
                         <thead>
                             <tr>
+                                <th>Id</th>
                                 <th>Date</th>
                                 <th>Description</th>
                                 <th>Amount</th>
@@ -104,10 +119,23 @@ export default function Transactions() {
                                 transactions.map(transaction => {
                                     return (
                                         <tr>
+                                            <td>{transaction.key}</td>
                                             <td>{transaction.date}</td>
-                                            <td>{transaction.amount}</td>
                                             <td>{transaction.desc}</td>
+                                            <td>{transaction.amount}</td>
                                             <td>
+                                                <Form.Select aria-label="Floating label select example" size="lg">
+                                                    <option>Category</option>
+                                                    <option value="1">Food</option>
+                                                    <option value="2">Car</option>
+                                                    <option value="3">House</option>
+                                                    <option value="4">Entertainment</option>
+                                                </Form.Select>
+                                            </td>
+                                            <td>
+                                                <Button variant="primary" type="submit" size="lg" onClick={() => updateCategory(transaction.key)}>Update</Button>
+                                            </td>
+                                            {/* <td>
                                                 <div>
                                                     <Badge pill bg="info">
                                                         Info
@@ -116,7 +144,7 @@ export default function Transactions() {
                                                         Dark
                                                     </Badge>
                                                 </div>
-                                            </td>
+                                            </td> */}
                                         </tr>
                                     )
                                 })
