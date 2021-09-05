@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar className="sticky-top">
+        {/* <Navbar className="sticky-top">
           <Container>
             <Navbar.Brand href="/">
               <img
@@ -23,7 +23,7 @@ function App() {
               />{' '}
               Budgee
             </Navbar.Brand>
-            <Nav className="me-auto">
+            <Nav className="me-auto"> */}
               <Link class="nav-link" to="/uploader">Upload</Link>
               <Link class="nav-link" to="/transactions">Transactions</Link>
               {/* TODO - Toggle for obfuscate data and numbers  */}
